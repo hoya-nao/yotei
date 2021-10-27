@@ -1,0 +1,5 @@
+<% if obj.errors.any? %>
+  <h2 class="keikoku">開始日と終了日は必ず入力してください！！！</h2>
+      <% obj.errors.full_messages.each do |message| %>
+      <% end %>
+    <% end %>

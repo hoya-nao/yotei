@@ -1,0 +1,42 @@
+<header class="header">
+    <h1 class="margin-left">Ruby on Rails スケジュール管理アプリ</h1>
+  </header>
+  
+<h3 class="margin-left margin-top">スケジュール一覧</h3>
+ <table class="margin-left">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>タイトル</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>終日</th>
+          <th>スケジュール更新日時</th>
+          <th>確認</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+ <tbody class="margin-left">
+        <% @welcomes.each do |welcome| %>
+          <tr>
+            <td><%= welcome.id %></td>
+            <td><%= welcome.title %></td>
+            <td><%= welcome.hajime.strftime('%Y年%m月%d日') %></td>
+            <td><%= welcome.owari.strftime('%Y年%m月%d日') %></td>
+            <td class="center"><%= welcome.syuujitu %></td>
+            <td><%= welcome.updated_at.strftime('%Y年%m月%d日　%H時%M分') %></td>
+            <td><%= link_to "確認", welcome %></td>
+            <td><%= link_to "編集", [:edit, welcome] %></td>
+            <td><%= link_to "削除", welcome, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      
+    </table>
+ <p class="margin-left"><%= link_to "スケジュール新規登録",:new_welcome %></p>
+ 
+<footer class="footer">
+    <h1 class="margin-left">現在の日時 : <%= Date.current.strftime('%Y年%m月%d日') %>　スケジュール合計 : <%= @welcomes.count %>
+    </h1>
+  </footer>
