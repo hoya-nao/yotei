@@ -1,0 +1,41 @@
+<header class="header">
+    <h1 class="margin-left">Ruby on Rails スケジュール管理アプリ</h1>
+  </header>
+
+ <h3 class="margin-left margin-top">ユーザー詳細</h3>
+ 
+    <table class="margin-left">
+      <tr>
+        <th>タイトル</th>
+        <td><%= @welcome.title %></td>
+      </tr>
+      <tr>
+        <th>開始日</th>
+        <td><%= @welcome.hajime.strftime('%Y年%m月%d日') %></td>
+      </tr>
+      <tr>
+        <th>終了日</th>
+        <td><%= @welcome.owari.strftime('%Y年%m月%d日') %></td>
+      </tr>
+      <tr>
+        <th>終日</th>
+        <td class="center"><%= @welcome.syuujitu %></td>
+      </tr>
+       <tr>
+        <th>スケジュールメモ</th>
+        <td><%= @welcome.memo %></td>
+      </tr>
+    </table>
+ 
+    <div class="margin-left">
+      <ul>
+        <li><%= link_to "スケジュール一覧にもどる", :welcomes_start %></li>
+        <li><%= link_to "スケジュールを編集する", :edit_welcome %></li>
+        <li><%= link_to "スケジュールを削除", welcome_path(@welcome.id), method: :delete, data: { confirm: "本当に削除しますか？"} %></li>
+      </ul>
+    </div>
+    
+    <footer class="footer">
+    <h1 class="margin-left">現在の日時 : <%= Date.current.strftime('%Y年%m月%d日') %>
+    </h1>
+  </footer>
